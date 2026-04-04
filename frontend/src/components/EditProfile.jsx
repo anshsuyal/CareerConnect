@@ -114,17 +114,11 @@ function EditProfile() {
 
   function handleProfileImage(e) {
     const file = e.target.files[0];
-    if (!file) {
-      return;
-    }
     setBackendProfileImage(file);
     setFrontendProfileImage(URL.createObjectURL(file));
   }
   function handleCoverImage(e) {
     const file = e.target.files[0];
-    if (!file) {
-      return;
-    }
     setBackendCoverImage(file);
     setFrontendCoverImage(URL.createObjectURL(file));
   }
@@ -234,7 +228,7 @@ function EditProfile() {
               onClick={() => profileImage.current?.click()}
             >
               <img
-                src={frontendProfileImage || dp}
+                src={frontendProfileImage}
                 alt={`${firstName} ${lastName}`.trim() || "Profile preview"}
                 loading="lazy"
                 className="h-full w-full object-cover"
