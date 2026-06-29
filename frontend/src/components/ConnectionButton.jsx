@@ -60,7 +60,7 @@ const buttonClasses = [
             return
         }
         try {
-            const result=await axios.get(`${serverUrl}/api/connection/getStatus/${userId}`,{withCredentials:true})
+            const result=await axios.get(`${serverUrl}/api/connection/getstatus/${userId}`,{withCredentials:true})
             setStatus(result.data?.status ?? "connect")
             
         } catch (error) {

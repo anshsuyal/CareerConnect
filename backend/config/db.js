@@ -5,7 +5,9 @@ dotenv.config();
 
 const connectDb = async () =>{
     try {
-        dns.setServers(["8.8.8.8", "8.8.4.4"]);
+        if (process.env.NODE_ENV !== "production") {
+            dns.setServers(["8.8.8.8", "8.8.4.4"]);
+        }
         await mongoose.connect(process.env.MONGODB_URL);
         console.log("db connected")
     } catch (error) {

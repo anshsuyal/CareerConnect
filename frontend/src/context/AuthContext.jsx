@@ -2,10 +2,10 @@ import React, { createContext } from 'react'
 import { io } from 'socket.io-client'
 
 export const authDataContext=createContext()
-export const socket = io("http://localhost:8000")
+export const socket = io(import.meta.env.VITE_BACKEND_URL || "http://localhost:8000")
 
 function AuthContext({children}) {
-const serverUrl="http://localhost:8000"
+const serverUrl= import.meta.env.VITE_BACKEND_URL || "http://localhost:8000"
     let value={
         serverUrl
     }
