@@ -4,13 +4,10 @@ import moment from "moment"
 import { FaRegCommentDots } from "react-icons/fa";
 import { BiLike, BiSolidLike } from "react-icons/bi";
 import axios from 'axios';
-import { authDataContext } from '../context/AuthContext';
+import { authDataContext, socket } from '../context/AuthContext';
 import { userDataContext } from '../context/UserContext';
 import { LuSendHorizontal } from "react-icons/lu";
-import { io } from "socket.io-client"
 import ConnectionButton from './ConnectionButton';
-
-const socket=io("http://localhost:8000")
 
 const getErrorMessage = (error) => error?.response?.data?.message || error?.message || 'Something went wrong'
 

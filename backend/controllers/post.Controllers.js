@@ -22,7 +22,8 @@ export const createPost=async (req,res)=>{
 return res.status(201).json(newPost)
 
     } catch (error) {
-        return res.status(201).json(`create post error ${error}`)
+        console.error("create post error:", error);
+        return res.status(500).json({ message: `create post error ${error}` });
     }
 }
 
@@ -35,6 +36,7 @@ export const getPost=async (req,res)=>{
         .sort({createdAt:-1})
         return res.status(200).json(post)
     } catch (error) {
+        console.error("getPost error:", error);
         return res.status(500).json({message:"getPost error"})
     }
 }
@@ -68,6 +70,7 @@ export const like =async (req,res)=>{
      return  res.status(200).json(post)
 
     } catch (error) {
+      console.error("like error:", error);
       return res.status(500).json({message:`like error ${error}`})  
     }
 }
@@ -94,6 +97,7 @@ export const comment=async (req,res)=>{
         return res.status(200).json(post)
 
     } catch (error) {
+        console.error("comment error:", error);
         return res.status(500).json({message:`comment error ${error}`})  
     }
 }

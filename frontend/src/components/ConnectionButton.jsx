@@ -1,11 +1,8 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
-import { authDataContext } from '../context/AuthContext'
+import { authDataContext, socket } from '../context/AuthContext'
 import axios from 'axios'
-import io from "socket.io-client"
 import { userDataContext } from '../context/UserContext'
 import { useNavigate } from 'react-router-dom'
-
-const socket=io("http://localhost:8000")
 const getErrorMessage = (error) => error?.response?.data?.message || error?.message || 'Something went wrong'
 
 function ConnectionButton({userId}) {

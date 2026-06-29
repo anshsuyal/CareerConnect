@@ -35,7 +35,12 @@ export const signUp = async (req, res) => {
       sameSite: "strict",
       secure: process.env.NODE_ENVIRONMENT === "production",
     });
-    return res.status(201).json(user);
+    
+    // Convert to object and delete password before returning
+    const userWithoutPassword = user.toObject();
+    delete userWithoutPassword.password;
+
+    return res.status(201).json(userWithoutPassword);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "signup error" });
@@ -62,7 +67,11 @@ export const login = async (req, res) => {
       sameSite: "strict",
       secure: process.env.NODE_ENVIRONMENT === "production",
     });
-    return res.status(200).json(user);
+
+    const userWithoutPassword = user.toObject();
+    delete userWithoutPassword.password;
+
+    return res.status(200).json(userWithoutPassword);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "login error" });
